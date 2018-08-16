@@ -4,6 +4,11 @@
   "description": "bpanel wallet application",
   "main": "dist/index.js",
   "scripts": {
+    "babel": "babel lib -d dist",
+    "watch": "babel lib -d dist --watch",
+    "clean": "rm -f ./dist/*.js",
+    "lint": "eslint lib/ test/ || exit 0",
+    "prepublish": "make babel",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,7 +19,22 @@
     "bitcoin"
   ],
   "author": "bcoin team",
-  "license": "ISC",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.9.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.4.0",
+    "react": "^16.2.0"
+  },
   "bugs": {
     "url": "https://github.com/bpanel-org/wallet/issues"
   },
