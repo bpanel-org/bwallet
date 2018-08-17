@@ -1,5 +1,5 @@
 {
-  "name": "@bpanel/wallet",
+  "name": "@bpanel/bwallet",
   "version": "0.0.1",
   "description": "bpanel wallet application",
   "main": "dist/index.js",
