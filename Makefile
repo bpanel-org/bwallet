@@ -1,3 +1,5 @@
+PATH := $(shell npm bin):$(PATH)
+
 all:
 	@npm run browserify
 
@@ -19,7 +21,10 @@ clean:
 lint:
 	@npm run lint
 
+lint-fix:
+	@npm run lint:fix
+
 test:
 	@npm test
 
-.PHONY: all browserify webpack clean lint test
+.PHONY: all browserify webpack clean lint lint-fix test

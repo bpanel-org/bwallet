@@ -13,7 +13,7 @@ describe('interface reducer', () => {
     const newState = reduceInterface(undefined, action);
 
     const expected = {
-      textFields: { [field]: { value, valid } }
+      textFields: { [field]: { value, valid } },
     };
 
     assert.deepEqual(newState, expected);
