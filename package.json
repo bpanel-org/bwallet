@@ -25,7 +25,7 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "babel-cli": "^6.26.0",
-    "babel-jest": "^23.4.2",
+    "babel-eslint": "^9.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
@@ -42,8 +42,11 @@
     "jsdom": "^12.0.0",
     "jsdom-global": "^3.0.2",
     "mocha": "^5.2.0",
-    "react": "^16.2.0",
+    "prettier": "^1.14.2",
     "redux-mock-store": "^1.5.3"
+  },
+  "peerDependencies": {
+    "react": "^16.2.0"
   },
   "bugs": {
     "url": "https://github.com/bpanel-org/wallet/issues"
