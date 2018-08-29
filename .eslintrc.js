@@ -21,12 +21,18 @@ module.exports = {
       }
     },
     {
-      files: ['tests/**/*.js'],
+      files: ['test/**/*.js'],
       env: {
-        mocha: true
+        mocha: true,
+        node: true,
       }
     }
   ],
+  settings: {
+    react: {
+      version: "16.2.0",
+    },
+  },
   rules: {
     'prettier/prettier': 'error',
     'no-empty': ['error', { allowEmptyCatch: true }],
