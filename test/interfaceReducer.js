@@ -1,5 +1,7 @@
 const { assert } = require('chai');
 
+const { TEXT_STORE_KEY } = require('../lib/constants');
+
 const { reduceInterface } = require('../lib/reducers');
 const { updateTextField } = require('../lib/actions');
 
@@ -13,7 +15,7 @@ describe('interface reducer', () => {
     const newState = reduceInterface(undefined, action);
 
     const expected = {
-      textFields: { [field]: { value, valid } },
+      [TEXT_STORE_KEY]: { [field]: { value, valid } },
     };
 
     assert.deepEqual(newState, expected);
