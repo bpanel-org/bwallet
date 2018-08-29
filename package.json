@@ -9,7 +9,7 @@
     "clean": "rm -f ./dist/*.js",
     "lint": "eslint lib/ test/ || exit 0",
     "prepublish": "make babel",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register test/*.js"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,15 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "babel-cli": "^6.26.0",
+    "babel-jest": "^23.4.2",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
     "eslint": "^4.9.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-import-resolver-webpack": "^0.8.3",
@@ -34,7 +38,12 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.4.0",
-    "react": "^16.2.0"
+    "fetch-mock": "^6.5.2",
+    "jsdom": "^12.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "react": "^16.2.0",
+    "redux-mock-store": "^1.5.3"
   },
   "bugs": {
     "url": "https://github.com/bpanel-org/wallet/issues"
