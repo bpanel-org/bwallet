@@ -30,8 +30,14 @@ jobs:
           - v1-dependencies-
 
       - run:
+          name: install libudev-dev
+          command: |
+            apt-get update && apt-get install -y libudev-dev
+
+      - run:
           name: run tests
           command: npm run test
+
       - save_cache:
           paths:
             - node_modules
