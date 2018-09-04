@@ -20,7 +20,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
   test:
     docker:
-      - image: circleci/node:10.2
+        - image: node:10.9.0
     working_directory: ~/repo
     steps:
       - checkout
@@ -44,7 +44,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
   lint:
     docker:
-      - image: circleci/node:10.2
+        - image: node:10.9.0
     working_directory: ~/repo
     steps:
       - checkout
