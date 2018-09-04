@@ -23,7 +23,8 @@
   "author": "bcoin team",
   "license": "MIT",
   "dependencies": {
-    "blgr": "^0.1.1"
+    "blgr": "^0.1.1",
+    "bmutex": "^0.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
