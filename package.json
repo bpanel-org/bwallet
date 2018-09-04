@@ -10,6 +10,7 @@
     "lint": "eslint lib/ test/ || exit 0",
     "lint:fix": "eslint --fix lib/ test/ || exit 0",
     "prepublish": "make babel",
+    "pretest": "./scripts/install-peer-deps.js",
     "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register test/*.js"
   },
   "repository": {
@@ -21,7 +22,9 @@
   ],
   "author": "bcoin team",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "blgr": "^0.1.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
@@ -47,7 +50,11 @@
     "redux-mock-store": "^1.5.3"
   },
   "peerDependencies": {
-    "react": "^16.2.0"
+    "react": "^16.2.0",
+    "redux": "4.0.0",
+    "bcoin": "bcoin-org/bcoin",
+    "bmultisig": "0.0.3",
+    "bledger": "0.1.2"
   },
   "bugs": {
     "url": "https://github.com/bpanel-org/wallet/issues"
