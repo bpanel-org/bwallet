@@ -32,7 +32,11 @@ jobs:
       - run:
           name: install libudev-dev
           command: |
-            apt-get update && apt-get install -y libudev-dev
+            apt-get update && apt-get install -y libudev-dev apt-utils
+
+      - run:
+          name: install npm deps
+          command: npm install
 
       - run:
           name: run tests
@@ -52,9 +56,13 @@ jobs:
           keys:
           - v2-dependencies-{{ checksum "package-lock.json" }}
           - v2-dependencies-
-      - run: npm install
+
       - run:
-          name: Lint
+          name: install npm deps
+          command: npm install
+
+      - run:
+          name: lint
           command: npm run lint
 
 workflows:
