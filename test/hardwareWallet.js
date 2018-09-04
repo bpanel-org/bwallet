@@ -1,15 +1,13 @@
 const { assert } = require('chai');
-const { HDPublicKey } = require('bcoin');
+let bcoin;
 
+if (process.env.BROWSER)
+  bcoin = require('bcoin/lib/bcoin-browser');
+else
+  bcoin = require('bcoin');
+
+const { HDPublicKey } = bcoin;
 const { HardwareWallet } = require('../lib/blockchain');
-
-// TODO: tests
-// create wallet
-// get wallet info
-// create multisig wallet
-// get multisig wallet info
-// sign transaction
-// join multisig wallet
 
 describe('ledger hardware wallet', async () => {
   it('should construct static fromOptions', () => {
@@ -19,7 +17,7 @@ describe('ledger hardware wallet', async () => {
 });
 
 // run certain tests only when device plugged in
-(async() => {
+(async () => {
   const hardware = HardwareWallet.fromOptions('ledger');
   const devices = await hardware.getDevices();
 
@@ -63,5 +61,5 @@ describe('ledger hardware wallet', async () => {
 
     })
   }
-})()
+})();
 
