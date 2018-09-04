@@ -10,7 +10,8 @@
     "lint": "eslint lib/ test/ || exit 0",
     "lint:fix": "eslint --fix lib/ test/ || exit 0",
     "prepublish": "make babel",
-    "pretest": "./scripts/install-peer-deps.js",
+    "installPeerDeps": "./scripts/install-peer-deps.js",
+    "pretest": "npm run installPeerDeps",
     "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register test/*.js"
   },
   "repository": {

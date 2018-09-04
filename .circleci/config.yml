@@ -39,13 +39,18 @@ jobs:
           command: npm install
 
       - run:
-          name: run tests
-          command: npm run test
+          name: install peer deps
+          command: npm run installPeerDeps
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: run tests
+          command: npm run test
+
   lint:
     docker:
         - image: node:10.9.0
