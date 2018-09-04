@@ -32,7 +32,7 @@ jobs:
       - run:
           name: install os deps
           command: |
-            apt-get update && apt-get install -y libudev-dev apt-utils libusb-1.0-0-dev
+            apt-get update && apt-get install -y libudev-dev apt-utils libusb-1.0-0-dev libssl-dev
 
       - run:
           name: install npm deps
@@ -42,6 +42,10 @@ jobs:
           name: install peer deps
           command: npm run installPeerDeps
 
+      - run:
+          name: create ssl certs
+          command: make ssl
+
       - save_cache:
           paths:
             - node_modules
@@ -50,6 +54,10 @@ jobs:
       - run:
           name: run tests
           command: npm run test
+
+      - run:
+          name: run browser tests
+          command: npm run test-browser
 
   lint:
     docker:
@@ -61,10 +69,6 @@ jobs:
           keys:
           - v2-dependencies-{{ checksum "package-lock.json" }}
           - v2-dependencies-
-
-      - run:
-          name: install npm deps
-          command: npm install
 
       - run:
           name: lint
