@@ -1,10 +1,8 @@
 const { assert } = require('chai');
 let bcoin;
 
-if (process.env.BROWSER)
-  bcoin = require('bcoin/lib/bcoin-browser');
-else
-  bcoin = require('bcoin');
+if (process.env.BROWSER) bcoin = require('bcoin/lib/bcoin-browser');
+else bcoin = require('bcoin');
 
 const { HDPublicKey } = bcoin;
 const { HardwareWallet } = require('../lib/blockchain');
@@ -23,7 +21,6 @@ describe('ledger hardware wallet', async () => {
 
   if (devices.length > 0) {
     describe('ledger hardware required tests', async () => {
-
       let hardware;
       const path = "m'/44'/0'/0'/0/0";
 
@@ -36,7 +33,6 @@ describe('ledger hardware wallet', async () => {
         hardware = null;
       });
 
-
       it('should get a real ledger device', async () => {
         const devices = await hardware.getDevices();
 
@@ -46,7 +42,7 @@ describe('ledger hardware wallet', async () => {
 
       it('should initialize', async () => {
         try {
-          await hardware.initialize()
+          await hardware.initialize();
           assert.equal(true, true);
         } catch (e) {
           assert.fail();
@@ -58,8 +54,6 @@ describe('ledger hardware wallet', async () => {
         const pubkey = await hardware.getPublicKey(path);
         assert.equal(pubkey instanceof HDPublicKey, true);
       });
-
-    })
+    });
   }
 })();
-
