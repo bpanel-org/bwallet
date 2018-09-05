@@ -36,7 +36,7 @@ jobs:
           command: |
             apt-get update
             apt-get install -y libudev-dev apt-utils libusb-1.0-0-dev \
-              libssl-dev build-essential
+              libssl-dev build-essential libx11-xcb-dev
 
       - run:
           name: install npm deps
