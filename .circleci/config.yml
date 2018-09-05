@@ -21,7 +21,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:10-browsers
+      - image: node:10.9.0
         environment:
           CHROME_BIN: /usr/bin/google-chrome
 
@@ -36,8 +36,12 @@ jobs:
       - run:
           name: install os deps
           command: |
-            sudo apt-get update \
-            && sudo apt-get install -y libudev-dev apt-utils libusb-1.0-0-dev
+            curl https://dl-ssl.google.com/linux/linux_signing_key.pub \
+              | apt-key add -
+            sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            apt-get update
+            && apt-get install -y libudev-dev apt-utils libusb-1.0-0-dev \
+              libssl-dev google-chrome-stable build-essential
 
       - run:
           name: install npm deps
