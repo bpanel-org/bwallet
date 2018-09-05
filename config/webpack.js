@@ -9,7 +9,7 @@ module.exports = {
   mode: 'development',
   target: 'web',
   entry: {
-    bledger: './lib/index.js'
+    bwallet: './lib/index.js'
   },
   externals: {
     react: 'React'

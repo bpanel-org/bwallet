@@ -1,7 +1,5 @@
 const fs = require('fs');
 const os = require('os');
-process.env.CHROME_BIN = require('puppeteer').executablePath();
-process.env.CHROMIUM_BIN = require('puppeteer').executablePath();
 
 // read https key/cert
 const httpsOptions = {};
@@ -18,10 +16,10 @@ const webpackConfigs = require('./webpack');
 module.exports = function(config) {
 
   const browserFlags = [
-    '--no-sandbox',
     '--ignore-certificate-errors',
     '--disable-web-security',
-    '--disable-setuid-sandbox',
+    '--no-sandbox',
+    '--disable-gpu',
   ];
 
   if (os.platform() !== 'darwin')
@@ -33,7 +31,7 @@ module.exports = function(config) {
     basePath: '..',
     frameworks: ['mocha'],
     files: [
-      'test/hardwareWallet.js'
+      'test/hardwareWallet.js',
     ],
     exclude: [],
     preprocessors: {
@@ -43,10 +41,10 @@ module.exports = function(config) {
 
     // Karma configs
     plugins: [
+      require('karma-chrome-launcher'),
       require('karma-webpack'),
       require('karma-mocha'),
       require('karma-mocha-reporter'),
-      require('karma-chrome-launcher')
     ],
 
     // web server configurations
@@ -59,8 +57,10 @@ module.exports = function(config) {
     browsers: ['Chrome_NoCerts'],
     customLaunchers: {
       Chrome_NoCerts: {
-        base: 'Chromium',
-        flags: browserFlags,
+        base: 'ChromeHeadless',
+        options: {
+          flags: browserFlags
+        },
       }
     },
 
