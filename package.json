@@ -27,7 +27,8 @@
   "license": "MIT",
   "dependencies": {
     "blgr": "^0.1.1",
-    "bmutex": "^0.1.2"
+    "bmutex": "^0.1.2",
+    "puppeteer": "^1.7.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

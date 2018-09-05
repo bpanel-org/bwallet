@@ -1,4 +1,7 @@
 const fs = require('fs');
+const os = require('os');
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+process.env.CHROMIUM_BIN = require('puppeteer').executablePath();
 
 // read https key/cert
 const httpsOptions = {};
@@ -13,6 +16,17 @@ try {
 const webpackConfigs = require('./webpack');
 
 module.exports = function(config) {
+
+  const browserFlags = [
+    '--no-sandbox',
+    '--ignore-certificate-errors',
+    '--disable-web-security',
+    '--disable-setuid-sandbox',
+  ];
+
+  if (os.platform() !== 'darwin')
+    browserFlags.push('--headless');
+
   config.set({
 
     // Project configurations
@@ -45,13 +59,8 @@ module.exports = function(config) {
     browsers: ['Chrome_NoCerts'],
     customLaunchers: {
       Chrome_NoCerts: {
-        base: 'Chrome',
-        flags: [
-          '--ignore-certificate-errors',
-          '--disable-web-security',
-          '--disable-setuid-sandbox',
-          '--no-sandbox',
-        ]
+        base: 'Chromium',
+        flags: browserFlags,
       }
     },
 
