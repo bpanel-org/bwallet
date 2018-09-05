@@ -1,5 +1,4 @@
 const fs = require('fs');
-const os = require('os');
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 process.env.CHROMIUM_BIN = require('puppeteer').executablePath();
 
@@ -23,9 +22,6 @@ module.exports = function(config) {
     '--disable-web-security',
     '--disable-setuid-sandbox',
   ];
-
-  if (os.platform() !== 'darwin')
-    browserFlags.push('--headless');
 
   config.set({
 
@@ -59,7 +55,7 @@ module.exports = function(config) {
     browsers: ['Chrome_NoCerts'],
     customLaunchers: {
       Chrome_NoCerts: {
-        base: 'Chromium',
+        base: 'Chrome',
         flags: browserFlags,
       }
     },
