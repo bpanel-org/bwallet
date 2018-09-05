@@ -1,5 +1,4 @@
 const fs = require('fs');
-const os = require('os');
 
 // read https key/cert
 const httpsOptions = {};
@@ -20,20 +19,17 @@ module.exports = function(config) {
     '--disable-web-security',
     '--no-sandbox',
     '--disable-gpu',
+    '--headless',
   ];
 
-  if (os.platform() !== 'darwin')
-    browserFlags.push('--headless');
-
   config.set({
-
     // Project configurations
     basePath: '..',
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'chai'],
     files: [
       'test/hardwareWallet.js',
     ],
-    exclude: [],
+    exclude: ['node_modules/**/test/*.js'],
     preprocessors: {
       'test/hardwareWallet.js': ['webpack']
     },
@@ -44,6 +40,7 @@ module.exports = function(config) {
       require('karma-chrome-launcher'),
       require('karma-webpack'),
       require('karma-mocha'),
+      require('karma-chai'),
       require('karma-mocha-reporter'),
     ],
 
@@ -54,9 +51,9 @@ module.exports = function(config) {
     httpsServerOptions: httpsOptions,
 
     // Disable Certificate checks
-    browsers: ['Chrome_NoCerts'],
+    browsers: ['ChromeHeadless_custom'],
     customLaunchers: {
-      Chrome_NoCerts: {
+      ChromeHeadless_custom: {
         base: 'ChromeHeadless',
         options: {
           flags: browserFlags
