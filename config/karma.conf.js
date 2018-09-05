@@ -49,7 +49,8 @@ module.exports = function(config) {
         flags: [
           '--ignore-certificate-errors',
           '--disable-web-security',
-          '--disable-setuid-sandbox'
+          '--disable-setuid-sandbox',
+          '--no-sandbox',
         ]
       }
     },
