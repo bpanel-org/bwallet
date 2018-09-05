@@ -46,7 +46,11 @@ module.exports = function(config) {
     customLaunchers: {
       Chrome_NoCerts: {
         base: 'Chrome',
-        flags: ['--ignore-certificate-errors', '--disable-web-security', '--no-sandbox', '--disable-gpu', '--disable-setuid-sandbox']
+        flags: [
+          '--ignore-certificate-errors',
+          '--disable-web-security',
+          '--disable-setuid-sandbox'
+        ]
       }
     },
 
