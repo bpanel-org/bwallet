@@ -1,0 +1,20 @@
+{
+  "getWalletResponse": ["foo"],
+  "getMultisigResponse": ["foo", "bar", "baz"],
+  "getWalletInfoResponse": {
+    "network": "main",
+    "wid": 0,
+    "balance": {
+      "tx": 9000,
+      "coin": 1337
+    }
+  },
+  "createWalletResponse": {
+    "network": "main",
+    "wid": 109,
+    "balance": {
+      "tx": 0,
+      "coin": 0
+    }
+  }
+}
