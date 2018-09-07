@@ -13,6 +13,8 @@ const {
   SELECTED_WALLET_NAMESPACE,
   PLUGIN_NAMESPACE,
   MULTISIG_WALLET_INFO_NAMESPACE,
+  MULTISIG_PROPOSAL_NAMESPACE,
+  SELECTED_PROPOSAL_NAMESPACE,
 } = require('../lib/constants');
 
 const { reduceWallets, [PLUGIN_NAMESPACE]: reduceApp } = require('../lib/reducers');
@@ -30,6 +32,7 @@ const {
   getAccountBalanceResponse,
   getAccountHistoryResponse,
   createAccountResponse,
+  getProposalMTXResponse,
 } = walletResponses;
 
 const { getClientMock } = require('./mockClient.js');
@@ -44,6 +47,8 @@ const {
   getWallets,
   selectWallet,
   createWallet,
+  getProposalMTX,
+  selectProposal,
 } = walletActions;
 
 const {
@@ -104,7 +109,6 @@ describe('wallets reducer', () => {
     const opts = {};
     let state;
     await createWallet(walletId, opts, 'multisig')((action) => {
-      console.log(action);
       state = reduceWallets(state, action);
     })
     const expected = createMSWalletResponse;
@@ -178,6 +182,7 @@ describe('wallets reducer', () => {
       state = reduceWallets(state, action);
       state = reduceApp(state, action);
     });
+
     const expected = getAccountInfoResponse;
     const expectedSelect = accountId;
 
@@ -188,7 +193,31 @@ describe('wallets reducer', () => {
       .deepEqual(state[SELECTED_ACCOUNT_NAMESPACE], accountId);
   });
 
-  xit('should select a proposal', async () => {});
-  xit('should get a proposal mtx', async () => {});
+  it('should select a proposal', async () => {
+    const walletId = 'satoshi';
+    const proposalId = 'satoshi proposal';
+    let state;
+    await selectProposal(walletId, proposalId)(action => {
+      state = reduceWallets(state, action);
+      state = reduceApp(state, action);
+    });
+    const expected = getProposalMTXResponse;
+    assert
+      .deepEqual(state[MULTISIG_PROPOSAL_NAMESPACE][walletId][proposalId], expected);
 
+    assert
+      .deepEqual(state[SELECTED_PROPOSAL_NAMESPACE], proposalId);
+  });
+
+  it('should get a proposal mtx', async () => {
+    const walletId = 'primewallet';
+    const proposalId = 'prime proposal';
+    let state;
+    await getProposalMTX(walletId, proposalId)(action => {
+      state = reduceWallets(state, action);
+    });
+    const expected = getProposalMTXResponse;
+    assert
+      .deepEqual(state[MULTISIG_PROPOSAL_NAMESPACE][walletId][proposalId], expected);
+  });
 });
