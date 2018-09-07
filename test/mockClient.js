@@ -8,6 +8,8 @@ const {
   getAccountsResponse,
   getAccountInfoResponse,
   getAccountBalanceResponse,
+  getAccountHistoryResponse,
+  createAccountResponse,
 } = walletResponses;
 
 
@@ -19,6 +21,8 @@ const getClientMock = () => ({
     getAccounts: () => Promise.resolve(getAccountsResponse),
     getAccount: () => Promise.resolve(getAccountInfoResponse),
     getBalance: () => Promise.resolve(getAccountBalanceResponse),
+    getHistory: () => Promise.resolve(getAccountHistoryResponse),
+    createAccount: () => Promise.resolve(createAccountResponse),
   },
   multisig: {
     getWallets: (type) => Promise.resolve(getMultisigResponse),

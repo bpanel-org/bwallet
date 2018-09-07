@@ -7,9 +7,13 @@ const {
   ACCOUNT_INFO_NAMESPACE,
   WALLET_INFO_NAMESPACE,
   BALANCE_NAMESPACE,
+  HISTORY_NAMESPACE,
+  SELECTED_ACCOUNT_NAMESPACE,
+  SELECTED_WALLET_NAMESPACE,
+  PLUGIN_NAMESPACE,
 } = require('../lib/constants');
 
-const { reduceWallets } = require('../lib/reducers');
+const { reduceWallets, [PLUGIN_NAMESPACE]: reduceApp } = require('../lib/reducers');
 
 const walletResponses = require('./data/walletResponses.json');
 
@@ -21,6 +25,8 @@ const {
   getAccountsResponse,
   getAccountInfoResponse,
   getAccountBalanceResponse,
+  getAccountHistoryResponse,
+  createAccountResponse
 } = walletResponses;
 
 const { getClientMock } = require('./mockClient.js');
@@ -71,9 +77,12 @@ describe('wallets reducer', () => {
     let state;
     await selectWallet(walletId)((action) => {
       state = reduceWallets(state, action);
+      state = reduceApp(state, action);
     });
     const expected = getWalletInfoResponse;
+    const expectedSelect = walletId;
     assert.deepEqual(state[WALLET_INFO_NAMESPACE][walletId], expected);
+    assert.deepEqual(state[SELECTED_WALLET_NAMESPACE], expectedSelect)
   });
 
   it('should create wallet', async () => {
@@ -119,5 +128,50 @@ describe('wallets reducer', () => {
     assert
       .deepEqual(state[BALANCE_NAMESPACE][walletId][accountId], expected);
   });
-});
 
+  it('should get account history', async () => {
+    const walletId = 'paul';
+    const accountId = 'storzc';
+    let state;
+    await getAccountHistory(walletId, accountId)((action) => {
+      state = reduceWallets(state, action);
+    });
+    const expected = getAccountHistoryResponse;
+    assert
+      .deepEqual(state[HISTORY_NAMESPACE][walletId][accountId], expected);
+  });
+
+  it('should create an account', async () => {
+    const walletId = 'wallet';
+    const accountId = 'account';
+    const options = {};
+    let state;
+    await createAccount(walletId, accountId, options)((action) => {
+      state = reduceWallets(state, action);
+    });
+    const expected = createAccountResponse;
+    assert
+      .deepEqual(state[ACCOUNT_INFO_NAMESPACE][walletId][accountId], expected);
+  });
+
+  it('should select an account', async () => {
+    const walletId = 'wallet9';
+    const accountId = 'account9';
+    let state;
+    await selectAccount(walletId, accountId)((action) => {
+      state = reduceWallets(state, action);
+      state = reduceApp(state, action);
+    });
+    const expected = getAccountInfoResponse;
+    const expectedSelect = accountId;
+
+    // two different reducers
+    // two different asserts
+    assert
+      .deepEqual(state[ACCOUNT_INFO_NAMESPACE][walletId][accountId], expected);
+
+    assert
+      .deepEqual(state[SELECTED_ACCOUNT_NAMESPACE], accountId);
+  });
+
+});
