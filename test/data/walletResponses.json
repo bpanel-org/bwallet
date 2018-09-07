@@ -17,6 +17,17 @@
       "coin": 0
     }
   },
+  "getMSWalletInfoResponse": {
+    "foo": "bar"
+  },
+  "createMSWalletResponse": {
+    "network": "main",
+    "wid": 45,
+    "balance": {
+      "tx": 10,
+      "coin": 120
+    }
+  },
   "getAccountsResponse": ["hat", "main", "sock"],
   "getAccountInfoResponse": {
     "name": "foobar",

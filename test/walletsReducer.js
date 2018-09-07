@@ -3,6 +3,7 @@ const rewire = require('rewire');
 
 const {
   WALLETS_NAMESPACE,
+  MULTISIG_WALLETS_NAMESPACE,
   ACCOUNTS_NAMESPACE,
   ACCOUNT_INFO_NAMESPACE,
   WALLET_INFO_NAMESPACE,
@@ -11,6 +12,7 @@ const {
   SELECTED_ACCOUNT_NAMESPACE,
   SELECTED_WALLET_NAMESPACE,
   PLUGIN_NAMESPACE,
+  MULTISIG_WALLET_INFO_NAMESPACE,
 } = require('../lib/constants');
 
 const { reduceWallets, [PLUGIN_NAMESPACE]: reduceApp } = require('../lib/reducers');
@@ -22,16 +24,17 @@ const {
   getMultisigResponse,
   getWalletInfoResponse,
   createWalletResponse,
+  createMSWalletResponse,
   getAccountsResponse,
   getAccountInfoResponse,
   getAccountBalanceResponse,
   getAccountHistoryResponse,
-  createAccountResponse
+  createAccountResponse,
 } = walletResponses;
 
 const { getClientMock } = require('./mockClient.js');
 
-
+// monkey patch getClient function
 const walletActions = rewire('../lib/actions/wallet');
 walletActions.__set__('getClient', getClientMock);
 const accountActions = rewire('../lib/actions/account');
@@ -69,7 +72,7 @@ describe('wallets reducer', () => {
       state = reduceWallets(state, action);
     });
     const expected = getMultisigResponse;
-    assert.deepEqual(state[WALLETS_NAMESPACE], expected);
+    assert.deepEqual(state[MULTISIG_WALLETS_NAMESPACE], expected)
   });
 
   it('should select wallet', async () => {
@@ -87,12 +90,25 @@ describe('wallets reducer', () => {
 
   it('should create wallet', async () => {
     const walletId = 'satoshis vision';
+    const opts = {};
     let state;
-    await createWallet(walletId)((action) => {
+    await createWallet(walletId, opts)((action) => {
       state = reduceWallets(state, action);
     })
     const expected = createWalletResponse;
     assert.deepEqual(state[WALLET_INFO_NAMESPACE][walletId], expected);
+  });
+
+  it('should create multisig wallet', async () => {
+    const walletId = 'wen binance';
+    const opts = {};
+    let state;
+    await createWallet(walletId, opts, 'multisig')((action) => {
+      console.log(action);
+      state = reduceWallets(state, action);
+    })
+    const expected = createMSWalletResponse;
+    assert.deepEqual(state[MULTISIG_WALLET_INFO_NAMESPACE][walletId], expected);
   });
 
   it('should get wallet accounts', async () => {
@@ -165,13 +181,14 @@ describe('wallets reducer', () => {
     const expected = getAccountInfoResponse;
     const expectedSelect = accountId;
 
-    // two different reducers
-    // two different asserts
     assert
       .deepEqual(state[ACCOUNT_INFO_NAMESPACE][walletId][accountId], expected);
 
     assert
       .deepEqual(state[SELECTED_ACCOUNT_NAMESPACE], accountId);
   });
+
+  xit('should select a proposal', async () => {});
+  xit('should get a proposal mtx', async () => {});
 
 });
