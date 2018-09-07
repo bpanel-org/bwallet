@@ -5,25 +5,23 @@ const {
   getMultisigResponse,
   getWalletInfoResponse,
   createWalletResponse,
+  getAccountsResponse,
+  getAccountInfoResponse,
+  getAccountBalanceResponse,
 } = walletResponses;
 
 
 const getClientMock = () => ({
   wallet: {
-    getWallets: () => {
-      return Promise.resolve(getWalletResponse);
-    },
-    getInfo: () => {
-      return Promise.resolve(getWalletInfoResponse);
-    },
-    createWallet: () => {
-      return Promise.resolve(createWalletResponse);
-    }
+    getWallets: () => Promise.resolve(getWalletResponse),
+    getInfo: () => Promise.resolve(getWalletInfoResponse),
+    createWallet: () => Promise.resolve(createWalletResponse),
+    getAccounts: () => Promise.resolve(getAccountsResponse),
+    getAccount: () => Promise.resolve(getAccountInfoResponse),
+    getBalance: () => Promise.resolve(getAccountBalanceResponse),
   },
   multisig: {
-    getWallets: (type) => {
-      return Promise.resolve(getMultisigResponse);
-    }
+    getWallets: (type) => Promise.resolve(getMultisigResponse),
   },
 });
 

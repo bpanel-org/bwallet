@@ -16,5 +16,15 @@
       "tx": 0,
       "coin": 0
     }
+  },
+  "getAccountsResponse": ["hat", "main", "sock"],
+  "getAccountInfoResponse": {
+    "name": "foobar",
+    "receiveAddress": "RLY9z6PCB3fggt36mnfA75jESRtvkALKX5"
+  },
+  "getAccountBalanceResponse": {
+    "account": 83,
+    "tx": 232,
+    "coin": 123
   }
 }
