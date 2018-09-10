@@ -5,7 +5,7 @@ if (process.env.BROWSER) bcoin = require('bcoin/lib/bcoin-browser');
 else bcoin = require('bcoin');
 
 const { HDPublicKey } = bcoin;
-const { HardwareWallet } = require('../lib/blockchain');
+const { HardwareWallet } = require('../lib/utilities');
 
 describe('ledger hardware wallet', async () => {
   it('should construct static fromOptions', () => {
