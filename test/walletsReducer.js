@@ -94,7 +94,7 @@ describe('wallets reducer', () => {
   });
 
   it('should create wallet', async () => {
-    const walletId = 'satoshis vision';
+    const walletId = 'satoshis-vision';
     const opts = {};
     let state;
     await createWallet(walletId, opts)((action) => {
@@ -105,7 +105,7 @@ describe('wallets reducer', () => {
   });
 
   it('should create multisig wallet', async () => {
-    const walletId = 'wen binance';
+    const walletId = 'wen-binance';
     const opts = {};
     let state;
     await createWallet(walletId, opts, 'multisig')((action) => {
@@ -195,7 +195,7 @@ describe('wallets reducer', () => {
 
   it('should select a proposal', async () => {
     const walletId = 'satoshi';
-    const proposalId = 'satoshi proposal';
+    const proposalId = 'satoshi-proposal';
     let state;
     await selectProposal(walletId, proposalId)(action => {
       state = reduceWallets(state, action);
@@ -211,7 +211,7 @@ describe('wallets reducer', () => {
 
   it('should get a proposal mtx', async () => {
     const walletId = 'primewallet';
-    const proposalId = 'prime proposal';
+    const proposalId = 'prime-proposal';
     let state;
     await getProposalMTX(walletId, proposalId)(action => {
       state = reduceWallets(state, action);
