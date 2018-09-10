@@ -1,10 +1,8 @@
 const { assert } = require('chai');
 let bcoin;
 
-if (process.env.BROWSER) bcoin = require('bcoin/lib/bcoin-browser');
-else bcoin = require('bcoin');
+const { HDPublicKey } = require('bcoin/lib/hd');;
 
-const { HDPublicKey } = bcoin;
 const { HardwareWallet } = require('../lib/utilities');
 
 describe('ledger hardware wallet', async () => {
