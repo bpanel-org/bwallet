@@ -27,11 +27,11 @@ module.exports = function(config) {
     basePath: '..',
     frameworks: ['mocha', 'chai'],
     files: [
-      'test/hardwareWallet.js',
+      'test/**/*.js',
     ],
     exclude: ['node_modules/**/test/*.js'],
     preprocessors: {
-      'test/hardwareWallet.js': ['webpack']
+      'test/**/*.js': ['webpack']
     },
     webpack: webpackConfigs,
 
