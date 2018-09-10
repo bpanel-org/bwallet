@@ -26,8 +26,11 @@
   "author": "bcoin team",
   "license": "MIT",
   "dependencies": {
+    "bfile": "^0.1.1",
     "blgr": "^0.1.1",
-    "bmutex": "^0.1.2"
+    "bmutex": "^0.1.2",
+    "bsert": "0.0.4",
+    "semver": "^5.5.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
