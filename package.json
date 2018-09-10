@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@bpanel/bpanel-utils": "0.0.13",
+    "@bpanel/bpanel-ui": "0.0.11",
     "bclient": "^0.1.3",
     "hs-client": "^0.0.2",
     "babel-cli": "^6.26.0",
@@ -78,6 +79,7 @@
   },
   "peerDependencies": {
     "@bpanel/bpanel-utils": "0.0.13",
+    "@bpanel/bpanel-ui": "0.0.11",
     "react": "^16.3.0",
     "redux": "4.0.0",
     "bcoin": "bcoin-org/bcoin",
