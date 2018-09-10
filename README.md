@@ -4,11 +4,18 @@ Work in progress.
 
 ### Usage
 
-Use as a plugin with `bPanel` to access your blockchain nodes.
-In `github.com/bpanel/bpanel`, update the config file
-so that the plugins array contains `@bpanel/simple-wallet`.
+Use as a plugin with `bPanel`
 
-This will include the plugin in your `bPanel` setup.
+Install using `bpanel-cli`
+
+```js
+$ npm install -g bpanel-cli
+
+$ bpanel-cli install @bpanel/bwallet
+```
+
+This will update the `bpanel` config file so that the plugins array contains `@bpanel/bwallet`.
+`bpanel` will install the plugin during its build.
 
 ### Features
 
