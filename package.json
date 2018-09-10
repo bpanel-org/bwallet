@@ -23,7 +23,8 @@
     "bcoin",
     "crypto",
     "wallet",
-    "bpanel"
+    "bpanel",
+    "wallet"
   ],
   "author": "bcoin team",
   "license": "MIT",
