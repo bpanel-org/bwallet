@@ -63,6 +63,8 @@ jobs:
           keys:
           - v2-dependencies-{{ checksum "package-lock.json" }}
 
+      - run: npm install
+
       - run:
           name: lint
           command: npm run lint
