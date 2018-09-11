@@ -1,0 +1,55 @@
+{
+  "getWalletResponse": ["foo"],
+  "getMultisigResponse": ["foo", "bar", "baz"],
+  "getWalletInfoResponse": {
+    "network": "main",
+    "wid": 0,
+    "balance": {
+      "tx": 9000,
+      "coin": 1337
+    }
+  },
+  "createWalletResponse": {
+    "network": "main",
+    "wid": 109,
+    "balance": {
+      "tx": 0,
+      "coin": 0
+    }
+  },
+  "getMSWalletInfoResponse": {
+    "foo": "bar"
+  },
+  "createMSWalletResponse": {
+    "network": "main",
+    "wid": 45,
+    "balance": {
+      "tx": 10,
+      "coin": 120
+    }
+  },
+  "getAccountsResponse": ["hat", "main", "sock"],
+  "getAccountInfoResponse": {
+    "name": "foobar",
+    "receiveAddress": "RLY9z6PCB3fggt36mnfA75jESRtvkALKX5"
+  },
+  "getAccountBalanceResponse": {
+    "account": 83,
+    "tx": 232,
+    "coin": 123
+  },
+  "getAccountHistoryResponse": [
+    {
+      "wid": 1,
+      "hash": "cf590322bc4eda648c8ab2c2c019e7760da30fc878dee7c02630c1e281dcce54"
+    },
+    {
+      "wid": 1,
+      "hash": "0a32c1cfe419cb7ab1ea7268b8fb3dddc795c7279b29ba353cbe38894ecb793b"
+    }
+  ],
+  "createAccountResponse": {
+    "name": "manbearpig",
+    "receiveAddress": "RLY9z6PCB3fggt36mnfA75jESRtvkALKX5"
+  }
+}
