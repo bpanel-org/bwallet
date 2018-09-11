@@ -1,4 +1,5 @@
 PATH := $(shell npm bin):$(PATH)
+TLS_OUT := config/certs
 
 all:
 	@npm run browserify
@@ -27,4 +28,10 @@ lint-fix:
 test:
 	@npm test
 
-.PHONY: all browserify webpack clean lint lint-fix test
+ssl:
+	@openssl req -newkey rsa:2048 \
+		-nodes -sha512 -x509 -days 3650 -nodes \
+		-subj '/CN=0.0.0.0' \
+		-out $(TLS_OUT)/cert.pem -keyout $(TLS_OUT)/key.pem
+
+.PHONY: all browserify webpack clean lint lint-fix test ssl

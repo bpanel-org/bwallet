@@ -2,14 +2,13 @@ version: 2
 jobs:
   install:
     docker:
-      - image: circleci/node:10.2
+      - image: node:10.9.0
     working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
 
       - run:
           name: install dependencies
@@ -18,37 +17,54 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
   test:
     docker:
-      - image: circleci/node:10.2
+      - image: node:10.9.0
+
     working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
 
       - run:
-          name: run tests
-          command: npm run test
+          name: install os deps
+          command: |
+            apt-get update
+            apt-get install -y libudev-dev apt-utils libusb-1.0-0-dev \
+              libssl-dev build-essential
+
+      - run:
+          name: install npm deps
+          command: npm install
+
+      - run:
+          name: install peer deps
+          command: npm run installPeerDeps
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run:
+          name: run tests
+          command: npm run test
+
   lint:
     docker:
-      - image: circleci/node:10.2
+        - image: node:10.9.0
     working_directory: ~/repo
     steps:
       - checkout
       - restore_cache:
           keys:
           - v2-dependencies-{{ checksum "package-lock.json" }}
-          - v2-dependencies-
-      - run: npm install
+
       - run:
-          name: Lint
+          name: lint
           command: npm run lint
 
 workflows:

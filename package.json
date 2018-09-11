@@ -6,31 +6,44 @@
   "scripts": {
     "babel": "babel lib -d dist",
     "watch": "babel lib -d dist --watch",
-    "clean": "rm -f ./dist/*.js",
+    "clean": "rm -rf ./dist/*",
     "lint": "eslint lib/ test/ || exit 0",
     "lint:fix": "eslint --fix lib/ test/ || exit 0",
     "prepublish": "make babel",
-    "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register test/*.js"
+    "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register test/*.js",
+    "test-browser": "karma start config/karma.conf.js",
+    "webpack": "webpack --config config/webpack.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bpanel-org/wallet.git"
   },
   "keywords": [
-    "bitcoin"
+    "bitcoin",
+    "bcoin",
+    "crypto",
+    "wallet",
+    "bpanel"
   ],
   "author": "bcoin team",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "bfile": "^0.1.1",
+    "blgr": "^0.1.1",
+    "bmutex": "^0.1.2",
+    "bsert": "0.0.4",
+    "semver": "^5.5.1"
+  },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.1.2",
     "eslint": "^4.9.0",
     "eslint-config-prettier": "^2.6.0",
@@ -42,12 +55,29 @@
     "fetch-mock": "^6.5.2",
     "jsdom": "^12.0.0",
     "jsdom-global": "^3.0.2",
+    "karma": "^3.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-mocha": "^1.3.0",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-webpack": "^3.0.2",
     "mocha": "^5.2.0",
     "prettier": "^1.14.2",
-    "redux-mock-store": "^1.5.3"
+    "redux-mock-store": "^1.5.3",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "react": "^16.2.0",
+    "redux": "4.0.0",
+    "bcoin": "bcoin-org/bcoin",
+    "bmultisig": "0.0.3",
+    "bledger": "0.1.2"
   },
   "peerDependencies": {
-    "react": "^16.2.0"
+    "react": "^16.2.0",
+    "redux": "4.0.0",
+    "bcoin": "bcoin-org/bcoin",
+    "bmultisig": "0.0.3",
+    "bledger": "0.1.2"
   },
   "bugs": {
     "url": "https://github.com/bpanel-org/wallet/issues"
