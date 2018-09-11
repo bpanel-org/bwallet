@@ -69,7 +69,7 @@
     "prettier": "^1.14.2",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "react": "^16.2.0",
+    "react": "^16.3.0",
     "redux": "4.0.0",
     "bcoin": "bcoin-org/bcoin",
     "bmultisig": "0.0.3",
@@ -78,7 +78,7 @@
   },
   "peerDependencies": {
     "@bpanel/bpanel-utils": "0.0.13",
-    "react": "^16.2.0",
+    "react": "^16.3.0",
     "redux": "4.0.0",
     "bcoin": "bcoin-org/bcoin",
     "bmultisig": "0.0.3",
