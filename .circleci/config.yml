@@ -66,6 +66,13 @@ jobs:
           keys:
           - v2-dependencies-{{ checksum "package-lock.json" }}
 
+      - run:
+          name: install os deps
+          command: |
+            apt-get update
+            apt-get install -y libudev-dev apt-utils libusb-1.0-0-dev \
+              libssl-dev build-essential
+
       - run: npm install
 
       - run:
