@@ -19,7 +19,11 @@
     "url": "git+https://github.com/bpanel-org/wallet.git"
   },
   "keywords": [
-    "bitcoin"
+    "bitcoin",
+    "bcoin",
+    "crypto",
+    "wallet",
+    "bpanel"
   ],
   "author": "bcoin team",
   "license": "MIT",
