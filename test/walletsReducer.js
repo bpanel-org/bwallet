@@ -195,7 +195,7 @@ describe('wallets reducer', () => {
       expected
     );
 
-    assert.deepEqual(state[SELECTED_ACCOUNT_NAMESPACE], accountId);
+    assert.deepEqual(state[SELECTED_ACCOUNT_NAMESPACE], expectedSelect);
   });
 
   it('should select a proposal', async () => {
