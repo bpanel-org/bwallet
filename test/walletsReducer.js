@@ -19,7 +19,7 @@ const {
 
 const {
   reduceWallets,
-  [PLUGIN_NAMESPACE]: reduceApp,
+  bwallet: reduceApp,
 } = require('../lib/reducers');
 
 const walletResponses = require('./data/walletResponses.json');
