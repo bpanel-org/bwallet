@@ -7,7 +7,7 @@
     "babel": "babel lib -d dist",
     "watch": "babel lib -d dist --watch",
     "clean": "rm -rf ./dist/*",
-    "lint": "eslint lib/ test/ || exit 0",
+    "lint": "eslint lib/ test/",
     "lint:fix": "eslint --fix lib/ test/ || exit 0",
     "prepublish": "make babel",
     "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register test/*.js",
