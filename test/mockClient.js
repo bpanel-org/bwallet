@@ -15,7 +15,6 @@ const {
   getProposalMTXResponse,
 } = walletResponses;
 
-
 const getClientMock = () => ({
   wallet: {
     getWallets: () => Promise.resolve(getWalletResponse),
@@ -37,4 +36,4 @@ const getClientMock = () => ({
 
 module.exports = {
   getClientMock,
-}
+};

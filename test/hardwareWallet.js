@@ -1,7 +1,7 @@
 const { assert } = require('chai');
 let bcoin;
 
-const { HDPublicKey } = require('bcoin/lib/hd');;
+const { HDPublicKey } = require('bcoin/lib/hd');
 
 const { HardwareWallet } = require('../lib/utilities');
 
