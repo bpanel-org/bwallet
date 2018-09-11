@@ -45,6 +45,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "@bpanel/bpanel-utils": "0.0.13",
     "chai": "^4.1.2",
     "eslint": "^4.9.0",
     "eslint-config-prettier": "^2.6.0",
@@ -74,6 +75,7 @@
     "rewire": "^4.0.1"
   },
   "peerDependencies": {
+    "@bpanel/bpanel-utils": "0.0.13",
     "react": "^16.2.0",
     "redux": "4.0.0",
     "bcoin": "bcoin-org/bcoin",
