@@ -17,10 +17,7 @@ const {
   SELECTED_PROPOSAL_NAMESPACE,
 } = require('../lib/constants');
 
-const {
-  reduceWallets,
-  bwallet: reduceApp,
-} = require('../lib/reducers');
+const { reduceWallets, bwallet: reduceApp } = require('../lib/reducers');
 
 const walletResponses = require('./data/walletResponses.json');
 
