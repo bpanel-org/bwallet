@@ -1,10 +1,7 @@
 const { assert } = require('chai');
 const rewire = require('rewire');
 
-const {
-  APP_NAMESPACES,
-  WALLETS_NAMESPACES,
-} = require('../lib/constants');
+const { APP_NAMESPACES, WALLETS_NAMESPACES } = require('../lib/constants');
 
 const {
   SELECTED_ACCOUNT_NAMESPACE,

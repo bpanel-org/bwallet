@@ -4,7 +4,7 @@ const { INTERFACE_NAMESPACES } = require('../lib/constants');
 const { TEXT_STORE_NAMESPACE } = INTERFACE_NAMESPACES;
 
 const { updateTextField } = require('../lib/actions');
-import reduceApp from '../lib/reducers/app';
+import reduceInterface from '../lib/reducers/interface';
 
 describe('interface reducer', () => {
   it('should update properly', () => {
