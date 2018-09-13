@@ -1,9 +1,10 @@
 const { assert } = require('chai');
 
-const { TEXT_STORE_KEY } = require('../lib/constants');
+const { INTERFACE_NAMESPACES } = require('../lib/constants');
+const { TEXT_STORE_NAMESPACE } = INTERFACE_NAMESPACES;
 
-const { reduceInterface } = require('../lib/reducers');
 const { updateTextField } = require('../lib/actions');
+import reduceApp from '../lib/reducers/app';
 
 describe('interface reducer', () => {
   it('should update properly', () => {
@@ -15,7 +16,7 @@ describe('interface reducer', () => {
     const newState = reduceInterface(undefined, action);
 
     const expected = {
-      [TEXT_STORE_KEY]: { [field]: { value, valid } },
+      [TEXT_STORE_NAMESPACE]: { [field]: { value, valid } },
     };
 
     assert.deepEqual(newState, expected);
