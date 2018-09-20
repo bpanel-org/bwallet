@@ -1,26 +1,28 @@
 const { assert } = require('chai');
 const rewire = require('rewire');
 
+const { APP_NAMESPACES, WALLETS_NAMESPACES } = require('../lib/constants');
+
+const {
+  SELECTED_ACCOUNT_NAMESPACE,
+  SELECTED_WALLET_NAMESPACE,
+  SELECTED_PROPOSAL_NAMESPACE,
+} = APP_NAMESPACES;
+
 const {
   WALLETS_NAMESPACE,
   MULTISIG_WALLETS_NAMESPACE,
-  ACCOUNTS_NAMESPACE,
-  ACCOUNT_INFO_NAMESPACE,
   WALLET_INFO_NAMESPACE,
-  BALANCE_NAMESPACE,
-  HISTORY_NAMESPACE,
-  SELECTED_ACCOUNT_NAMESPACE,
-  SELECTED_WALLET_NAMESPACE,
-  PLUGIN_NAMESPACE,
   MULTISIG_WALLET_INFO_NAMESPACE,
   MULTISIG_PROPOSAL_NAMESPACE,
-  SELECTED_PROPOSAL_NAMESPACE,
-} = require('../lib/constants');
+  ACCOUNT_INFO_NAMESPACE,
+  BALANCE_NAMESPACE,
+  ACCOUNTS_NAMESPACE,
+  HISTORY_NAMESPACE,
+} = WALLETS_NAMESPACES;
 
-const {
-  reduceWallets,
-  [PLUGIN_NAMESPACE]: reduceApp,
-} = require('../lib/reducers');
+import reduceWallets from '../lib/reducers/wallet';
+import reduceApp from '../lib/reducers/app';
 
 const walletResponses = require('./data/walletResponses.json');
 
