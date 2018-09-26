@@ -74,6 +74,7 @@
     "mocha": "^5.2.0",
     "prettier": "^1.14.2",
     "react": "^16.3.0",
+    "react-router-dom": "^4.2.2",
     "redux": "4.0.0",
     "reselect": "^3.0.1",
     "rewire": "^4.0.1",
@@ -89,7 +90,8 @@
     "bcoin": "bcoin-org/bcoin",
     "bmultisig": "0.0.3",
     "bledger": "0.1.2",
-    "reselect": "^3.0.1"
+    "reselect": "^3.0.1",
+    "react-router-dom": "^4.2.2"
   },
   "bugs": {
     "url": "https://github.com/bpanel-org/wallet/issues"
