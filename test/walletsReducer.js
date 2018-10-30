@@ -40,13 +40,13 @@ const {
   getProposalMTXResponse,
 } = walletResponses;
 
-const { getClientMock } = require('./mockClient.js');
+import { getClient } from './mockClient.js';
 
 // monkey patch getClient function
 const walletActions = rewire('../lib/actions/wallet');
-walletActions.__set__('getClient', getClientMock);
+walletActions.__set__('getClient', getClient);
 const accountActions = rewire('../lib/actions/account');
-accountActions.__set__('getClient', getClientMock);
+accountActions.__set__('getClient', getClient);
 
 const {
   getWallets,
