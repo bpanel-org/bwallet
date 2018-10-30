@@ -16,11 +16,17 @@ describe('bip 44 account path templating', () => {
   });
 
   it('should template bitcoin cash main account 1', () => {
-    assert.equal(templateBIP44Account('bitcoincash', 'main', 1), "m'/44'/145'/1'");
+    assert.equal(
+      templateBIP44Account('bitcoincash', 'main', 1),
+      "m'/44'/145'/1'"
+    );
   });
 
   it('should template handshake main account 0', () => {
-    assert.equal(templateBIP44Account('handshake', 'main', 0), "m'/44'/5353'/0'");
+    assert.equal(
+      templateBIP44Account('handshake', 'main', 0),
+      "m'/44'/5353'/0'"
+    );
   });
 
   it('should throw error for negative account number', () => {
