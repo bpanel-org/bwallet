@@ -29,16 +29,16 @@
   "author": "bcoin team",
   "license": "MIT",
   "dependencies": {
-    "bfile": "^0.1.1",
-    "blgr": "^0.1.1",
-    "bmutex": "^0.1.2",
+    "bfile": "^0.1.2",
+    "blgr": "^0.1.2",
+    "bmutex": "^0.1.3",
     "bsert": "0.0.4",
-    "bstring": "^0.2.0",
+    "bstring": "^0.3.2",
     "semver": "^5.5.1"
   },
   "devDependencies": {
     "@bpanel/bpanel-ui": "0.0.13",
-    "@bpanel/bpanel-utils": "0.0.13",
+    "@bpanel/bpanel-utils": "0.1.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
@@ -81,7 +81,7 @@
     "webpack-cli": "^3.1.0"
   },
   "peerDependencies": {
-    "@bpanel/bpanel-utils": "0.0.13",
+    "@bpanel/bpanel-utils": "0.1.2",
     "@bpanel/bpanel-ui": "0.0.13",
     "react": "^16.3.0",
     "redux": "4.0.0",
