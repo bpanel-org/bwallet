@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@bpanel/bpanel-ui": "0.0.13",
-    "@bpanel/bpanel-utils": "0.1.2",
+    "@bpanel/bpanel-utils": "0.1.3",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
