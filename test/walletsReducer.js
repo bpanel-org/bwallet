@@ -71,7 +71,13 @@ describe('wallets reducer', () => {
     await getWallets()(action => {
       state = reduceWallets(state, action);
     });
-    const expected = getWalletResponse;
+
+    // should only return wallets that
+    // are standard since the standard api
+    // is a superset that also will include
+    // the multisig wallets
+    const expected = getWalletResponse.filter(w => !getMultisigResponse.includes(w));
+
     assert.deepEqual(state[WALLETS_NAMESPACE], expected);
   });
 
