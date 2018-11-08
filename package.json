@@ -83,7 +83,7 @@
   },
   "peerDependencies": {
     "@bpanel/bpanel-utils": "0.1.2",
-    "@bpanel/bpanel-ui": "0.0.13",
+    "@bpanel/bpanel-ui": "^0.0.14",
     "react": "^16.3.0",
     "redux": "4.0.0",
     "lodash": "^4.17.11",
