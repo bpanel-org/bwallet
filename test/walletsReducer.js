@@ -66,7 +66,7 @@ const {
 } = accountActions;
 
 const stateMock = () => ({
-  clients: { currentClient: { services: { wallet: true, multisig: true } } }
+  clients: { currentClient: { services: { wallet: true, multisig: true } } },
 });
 
 describe('wallets reducer', () => {
