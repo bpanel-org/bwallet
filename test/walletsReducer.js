@@ -65,21 +65,33 @@ const {
   selectAccount,
 } = accountActions;
 
+const stateMock = () => ({
+  clients: { currentClient: { services: { wallet: true, multisig: true } } },
+});
+
 describe('wallets reducer', () => {
   it('should get wallets', async () => {
     let state;
     await getWallets()(action => {
       state = reduceWallets(state, action);
-    });
-    const expected = getWalletResponse;
+    }, stateMock);
+
+    // should only return wallets that
+    // are standard since the standard api
+    // is a superset that also will include
+    // the multisig wallets
+    const expected = getWalletResponse.filter(
+      w => !getMultisigResponse.includes(w)
+    );
+
     assert.deepEqual(state[WALLETS_NAMESPACE], expected);
   });
 
   it('should get multisig wallets', async () => {
     let state;
-    await getWallets('multisig')(action => {
+    await getWallets()(action => {
       state = reduceWallets(state, action);
-    });
+    }, stateMock);
     const expected = getMultisigResponse;
     assert.deepEqual(state[MULTISIG_WALLETS_NAMESPACE], expected);
   });

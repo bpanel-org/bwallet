@@ -1,6 +1,6 @@
 {
-  "getWalletResponse": ["foo"],
-  "getMultisigResponse": ["foo", "bar", "baz"],
+  "getMultisigResponse": ["foo"],
+  "getWalletResponse": ["foo", "bar", "baz"],
   "getWalletInfoResponse": {
     "network": "main",
     "wid": 0,
