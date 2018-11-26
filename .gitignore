@@ -2,4 +2,5 @@ dist
 .DS_Store
 node_modules
 config/certs/*.pem
+scripts/secrets.sh
 
