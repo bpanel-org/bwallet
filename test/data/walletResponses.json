@@ -22,6 +22,7 @@
   },
   "createMSWalletResponse": {
     "network": "main",
+    "cosigners": [{"token": 1234}],
     "wid": 45,
     "balance": {
       "tx": 10,
