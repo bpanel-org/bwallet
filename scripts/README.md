@@ -4,6 +4,8 @@ the bPanel backend
 Create a file `scripts/secrets.sh` and fill it with
 the following information:
 
+Depends on `jq`
+
 ```sh
 BCOIN_API_KEY=
 BCOIN_HTTP_HOST=
