@@ -19,6 +19,9 @@ describe('interface reducer', () => {
       [TEXT_STORE_NAMESPACE]: { [field]: { value, valid } },
     };
 
-    assert.deepEqual(newState[TEXT_STORE_NAMESPACE], expected[TEXT_STORE_NAMESPACE]);
+    assert.deepEqual(
+      newState[TEXT_STORE_NAMESPACE],
+      expected[TEXT_STORE_NAMESPACE]
+    );
   });
 });
