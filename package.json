@@ -1,6 +1,6 @@
 {
   "name": "@bpanel/bwallet",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "bpanel wallet application",
   "main": "dist/index.js",
   "scripts": {
