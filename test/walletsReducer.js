@@ -54,6 +54,7 @@ const {
   createWallet,
   getProposalMTX,
   selectProposal,
+  clearAllWallets,
 } = walletActions;
 
 const {
@@ -69,7 +70,7 @@ const stateMock = () => ({
   clients: { currentClient: { services: { wallet: true, multisig: true } } },
 });
 
-describe('wallets reducer', () => {
+describe.only('wallets reducer', () => {
   it('should get wallets', async () => {
     let state;
     await getWallets()(action => {
@@ -240,6 +241,38 @@ describe('wallets reducer', () => {
     assert.deepEqual(
       state[MULTISIG_PROPOSAL_NAMESPACE][walletId][proposalId],
       expected
+    );
+  });
+
+  it('should clear walletInfo and multisigWalletInfo', async () => {
+    const multiId = 'multisig';
+    const walletId = 'wallet';
+    const opts = {};
+    let state;
+    await createWallet(multiId, opts, 'multisig')(action => {
+      state = reduceWallets(state, action);
+    });
+    await createWallet(walletId, opts)(action => {
+      state = reduceWallets(state, action);
+    });
+    assert(
+      Object.keys(state[WALLET_INFO_NAMESPACE]).length > 0,
+      'Should have wallets'
+    );
+    assert(
+      Object.keys(state[MULTISIG_WALLET_INFO_NAMESPACE]).length > 0,
+      'Should have wallets'
+    );
+    const action = clearAllWallets();
+    state = reduceWallets(state, action);
+
+    assert(
+      Object.keys(state[WALLET_INFO_NAMESPACE]).length === 0,
+      'Expected wallet info object to be empty'
+    );
+    assert(
+      Object.keys(state[MULTISIG_WALLET_INFO_NAMESPACE]).length === 0,
+      'Expected multisig wallet info object to be empty'
     );
   });
 });
