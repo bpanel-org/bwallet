@@ -10,7 +10,7 @@
     "lint": "eslint lib/ test/",
     "lint:fix": "eslint --fix lib/ test/ || exit 0",
     "prepublish": "make babel",
-    "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register test/*.js",
+    "test": "mocha --reporter spec -r babel-core/register -r jsdom-global/register -r isomorphic-fetch test/*.js",
     "test-browser": "karma start config/karma.conf.js",
     "webpack": "webpack --config config/webpack.js"
   },
@@ -34,7 +34,8 @@
     "bmutex": "0.1.4",
     "bsert": "0.0.6",
     "bstring": "^0.3.4",
-    "semver": "^5.5.1"
+    "trezor-connect": "^6.0.2",
+    "trezor.js": "^6.19.2"
   },
   "devDependencies": {
     "@bpanel/bpanel-ui": "0.0.17",
@@ -48,9 +49,9 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "bcash": "github:bcoin-org/bcash",
     "bclient": "0.1.5",
     "bcoin": "github:bcoin-org/bcoin",
-    "bcash": "github:bcoin-org/bcash",
     "bledger": "0.1.2",
     "bmultisig": "1.0.1",
     "chai": "^4.1.2",
@@ -64,6 +65,7 @@
     "fetch-mock": "^6.5.2",
     "hs-client": "0.0.4",
     "hsd": "github:handshake-org/hsd",
+    "isomorphic-fetch": "^2.2.1",
     "jsdom": "^12.0.0",
     "jsdom-global": "^3.0.2",
     "karma": "^3.0.0",
